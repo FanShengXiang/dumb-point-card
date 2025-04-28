@@ -3,10 +3,15 @@ import './App.css';
 
 function App() {
   const [points, setPoints] = useState([]);
+  
+  // 判斷環境：開發(localhost) vs 上線(連render後端)
+  const apiBase = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000'
+    : 'https://dumb-point-card.onrender.com'; // 記得換成你的後端網址！
 
-  // 一開啟網頁，就從後端API讀取點數
+  // 一打開就從後端讀取點數
   useEffect(() => {
-    fetch('http://localhost:5000/points')
+    fetch(`${apiBase}/points`)
       .then(res => res.json())
       .then(data => {
         if (data === null) {
@@ -18,13 +23,13 @@ function App() {
       .catch(error => console.error('Error fetching points:', error));
   }, []);
 
+  // 點擊切換點數，同步更新後端
   const togglePoint = (index) => {
     const newPoints = [...points];
     newPoints[index] = !newPoints[index];
     setPoints(newPoints);
 
-    // 更新後端資料庫
-    fetch('http://localhost:5000/points', {
+    fetch(`${apiBase}/points`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ points: newPoints })
