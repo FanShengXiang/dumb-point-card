@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 flask
 flask-cors
 psycopg2-binary
 dotenv
+=======
+flask
+flask-cors
+psycopg2-binary
+dotenv
+>>>>>>> 68294d46a03e816f45c287531ca76729bdbd1577
