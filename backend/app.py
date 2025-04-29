@@ -83,9 +83,6 @@ def update_pointsB():
     cursor.close()
     return jsonify({'message': 'PointsB updated!'})
 
-### =========================
-### Server啟動
-### =========================
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

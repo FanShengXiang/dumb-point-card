@@ -7,9 +7,9 @@ function App() {
   // 判斷環境：開發(localhost) vs 上線(連render後端)
   const apiBase = process.env.NODE_ENV === 'development'
     ? 'http://localhost:6543'
-    : 'https://dumb-point-card.onrender.com'; // 記得換成你的後端網址！
+    : 'https://dumb-point-card.onrender.com'; 
 
-  // 一打開就從後端讀取點數
+  // fetch 透過 http >> 跟網站要資料 >> default 用 
   useEffect(() => {
     fetch(`${apiBase}/pointsA`)
       .then(res => res.json())
@@ -35,7 +35,7 @@ function App() {
 
   }, []);
 
-  // 點擊切換點數，同步更新後端
+  // 點擊切換點數，同步更新後端  
   const togglePointA = (index) => {
     const newPoints = [...pointsA];
     newPoints[index] = !newPoints[index];
