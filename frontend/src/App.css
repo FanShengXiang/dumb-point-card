@@ -23,9 +23,20 @@
   cursor: pointer;
   border-radius: 10px;
   user-select: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .point.active {
   background: #4caf50;
   color: white;
+}
+
+.point.activeA {
+  background-image: url('\Q1.png');
+}
+
+.point.activeB {
+  background-image: url('\Q2.png');
 }
